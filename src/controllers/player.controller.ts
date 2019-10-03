@@ -1,23 +1,27 @@
-import { Request, Response, Router } from 'express';
-import { PlayerDataservice } from '../dataservices/player.dataservice';
+import { controller, request } from 'bin/dcorators/controller.decorator';
+import { Controller } from 'controllers/controller';
+import { PlayerDataservice } from 'dataservices/player.dataservice';
+import { Request, Response } from 'express';
 
-export class PlayerController {
-    public basePath: string = '/';
-    public router: Router;
-
-    constructor() {
-        this.router = Router();
-        this.initRoutes();
-    }
-
+@controller({
+    basePath: '',
+    routes: [
+        {
+            path: '/players',
+            method: 'get',
+            handler: 'getPlayers'
+        }
+    ]
+})
+export class PlayerController extends Controller {
     /**
      * Gets players
      * @param req
      * @param res
      */
+    @request
     public async getPlayers(req: Request, res: Response) {
-        const results: any[] = await new PlayerDataservice().getPlayers();
-        res.send({results});
+        return await new PlayerDataservice().getPlayers();
     }
 
     /**
@@ -27,14 +31,7 @@ export class PlayerController {
      */
     public async getPlayer(req: Request, res: Response) {
         const results: any = await new PlayerDataservice().getPlayer(Number(req.params.id));
-        res.send({results});
+        res.send({ results });
     }
 
-    /**
-     * Inits routes
-     */
-    public initRoutes() {
-        this.router.get(`${this.basePath}players`, this.getPlayers);
-        this.router.get(`${this.basePath}players/:id`, this.getPlayer);
-    }
 }

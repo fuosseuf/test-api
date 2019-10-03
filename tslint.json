@@ -7,6 +7,7 @@
     "rules": {
         "no-reference": true,
         "no-trailing-whitespace": true,
+        "trailing-comma": false,
         "no-unused-expression": false,
         "max-classes-per-file": [
             true,

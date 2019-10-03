@@ -1,3 +1,6 @@
+/* tslint:disable */
+require('module-alias/register');
+/* tslint:enable */
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import sinon from 'sinon';

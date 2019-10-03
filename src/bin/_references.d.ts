@@ -10,5 +10,16 @@ declare namespace NodeJS {
 
     interface ProcessEnv {
         ENV: string;
+        SECRET: string;
     }
+}
+
+interface IReqDetails {
+    loggedUser?: any;
+    headers: any;
+    startAt: moment.Moment;
+}
+
+declare namespace Express {
+    export interface Request extends core.Request { reqDetails: IReqDetails; }
 }

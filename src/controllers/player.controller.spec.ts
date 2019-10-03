@@ -1,7 +1,7 @@
-import { PlayerController } from './player.controller';
-import { PlayerDataservice } from '../dataservices/player.dataservice';
-import { Response, Request } from 'express';
+import { Request, Response } from 'express';
 import { SinonStub } from 'sinon';
+import { PlayerDataservice } from '../dataservices/player.dataservice';
+import { PlayerController } from './player.controller';
 
 describe('PlayerController', () => {
     const controller: PlayerController = new PlayerController();
