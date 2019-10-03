@@ -1,4 +1,4 @@
-import express, {Application, NextFunction, Request, Response, Router} from 'express';
+import express, { Application, NextFunction, Request, Response, Router } from 'express';
 import { PlayerController } from '../controllers/player.controller';
 import { ApiError } from './api-error';
 
@@ -22,9 +22,9 @@ export class App {
 
     /**
      * Handles not found routes
-     * @param req
-     * @param res
-     * @param next
+     * @param req 
+     * @param res 
+     * @param next 
      */
     private handleNotFoundRoutes(req: Request, res: Response, next: NextFunction) {
         next(new ApiError(404, 'Ressource not found!'));
@@ -32,15 +32,13 @@ export class App {
 
     /**
      * Handles error
-     * @param err
-     * @param req
-     * @param res
-     * @param next
+     * @param err 
+     * @param req 
+     * @param res 
+     * @param next 
      */
     private handleError(err: ApiError, req: Request, res: Response, next: NextFunction) {
-
-        console.log('fdsfdsfsddssdsd');
-        res.status(err.status || 500).json({error: true, message: err.message, status: err.status});
+        res.status(err.status || 500).json({ error: true, message: err.message, status: err.status });
     }
 
 }

@@ -1,17 +1,12 @@
-import { Request, Response } from 'express';
-import { SinonStub } from 'sinon';
-import { PlayerDataservice } from '../dataservices/player.dataservice';
 import { PlayerController } from './player.controller';
+import { PlayerDataservice } from '../dataservices/player.dataservice';
+import { Response, Request } from 'express';
+import { SinonStub } from 'sinon';
 
 describe('PlayerController', () => {
     const controller: PlayerController = new PlayerController();
-    const res: Response = { send: sin.stub() };
-    const req: Request = { params: { id: '9' } };
-
-    it('should init routes', () => {
-        // console.log(controller.router.route('/players'));
-        // expect(controller.router.get).to.have.been.calledTwice;
-    });
+    const res: Response = { send: sin.stub() } as any;
+    const req: Request = { params: { id: '9' } } as any;
 
     it('should get all players', async () => {
         const results: any[] = [{ id: 2 }, { id: 9 }];
